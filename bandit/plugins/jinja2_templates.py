@@ -89,11 +89,15 @@ def jinja2_autoescape_false(context):
                             severity=bandit.HIGH,
                             confidence=bandit.HIGH,
                             cwe=issue.Cwe.CODE_INJECTION,
-                            text="Using jinja2 templates with autoescape="
-                            "False is dangerous and can lead to XSS. "
-                            "Use autoescape=True or use the "
-                            "select_autoescape function to mitigate XSS "
-                            "vulnerabilities.",
+                            text="在使用jinja2的时候让autoescape=False是危险的，"
+                                 " 并且会导致 XSS 出现 "
+                                 " 确保 autoescape=True，或者使用 select_autoescape 功能"
+                                 " 去屏蔽XSS问题 ",
+                            # text="Using jinja2 templates with autoescape="
+                            #      "False is dangerous and can lead to XSS. "
+                            #      "Ensure autoescape=True or use the "
+                            #      "select_autoescape function to mitigate "
+                            #      "XSS vulnerabilities.",
                         )
                     # found autoescape
                     if getattr(node, "arg", None) == "autoescape":
@@ -116,11 +120,15 @@ def jinja2_autoescape_false(context):
                                 severity=bandit.HIGH,
                                 confidence=bandit.MEDIUM,
                                 cwe=issue.Cwe.CODE_INJECTION,
-                                text="Using jinja2 templates with autoescape="
-                                "False is dangerous and can lead to XSS. "
-                                "Ensure autoescape=True or use the "
-                                "select_autoescape function to mitigate "
-                                "XSS vulnerabilities.",
+                                text="在使用jinja2的时候让autoescape=False是危险的，"
+                                " 并且会导致 XSS 出现 "
+                                " 确保 autoescape=True，或者使用 select_autoescape 功能"
+                                " 去屏蔽XSS问题 ",
+                                # text="Using jinja2 templates with autoescape="
+                                #      "False is dangerous and can lead to XSS. "
+                                #      "Ensure autoescape=True or use the "
+                                #      "select_autoescape function to mitigate "
+                                #      "XSS vulnerabilities.",
                             )
             # We haven't found a keyword named autoescape, indicating default
             # behavior
@@ -128,7 +136,10 @@ def jinja2_autoescape_false(context):
                 severity=bandit.HIGH,
                 confidence=bandit.HIGH,
                 cwe=issue.Cwe.CODE_INJECTION,
-                text="By default, jinja2 sets autoescape to False. Consider "
-                "using autoescape=True or use the select_autoescape "
-                "function to mitigate XSS vulnerabilities.",
+                text="jinja2默认autoescape=False."
+                "考虑使用autoescape=True 或者使用 select_autoescape 功能 "
+                "去屏蔽XSS问题",
+                # text="By default, jinja2 sets autoescape to False. Consider "
+                #      "using autoescape=True or use the select_autoescape "
+                #      "function to mitigate XSS vulnerabilities.",
             )

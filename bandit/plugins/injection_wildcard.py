@@ -138,7 +138,8 @@ def linux_commands_wildcard_injection(context, config):
                             severity=bandit.HIGH,
                             confidence=bandit.MEDIUM,
                             cwe=issue.Cwe.IMPROPER_WILDCARD_NEUTRALIZATION,
-                            text="Possible wildcard injection in call: %s"
+                            # text="Possible wildcard injection in call: %s"
+                            text="调用中可能会有wildcard注入: %s"
                             % context.call_function_name_qual,
                             lineno=context.get_lineno_for_call_arg("shell"),
                         )

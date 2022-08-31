@@ -185,7 +185,8 @@ def transform2call(var):
 
 
 def check_risk(node):
-    description = "Potential XSS on mark_safe function."
+    description = "潜在的 XSS 在 mark_safe 功能中."
+    # description = "Potential XSS   on mark_safe function."
     xss_var = node.args[0]
 
     secure = False

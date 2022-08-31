@@ -54,5 +54,6 @@ def logging_config_insecure_listen(context):
             severity=bandit.MEDIUM,
             confidence=bandit.HIGH,
             cwe=issue.Cwe.CODE_INJECTION,
-            text="Use of insecure logging.config.listen detected.",
+            text="检测到使用了不安全的logging.config.listen",
+            # text="Use of insecure logging.config.listen detected.",
         )

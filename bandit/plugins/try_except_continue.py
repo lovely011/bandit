@@ -104,5 +104,6 @@ def try_except_continue(context, config):
                 severity=bandit.LOW,
                 confidence=bandit.HIGH,
                 cwe=issue.Cwe.IMPROPER_CHECK_OF_EXCEPT_COND,
-                text=("Try, Except, Continue detected."),
+                text=("检测到try，except，continue"),
+                # text=("Try, Except, Continue detected."),
             )

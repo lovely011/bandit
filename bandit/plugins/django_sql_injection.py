@@ -46,7 +46,8 @@ def django_extra_used(context):
         CWE information added
 
     """  # noqa: E501
-    description = "Use of extra potential SQL attack vector."
+    description = "使用了额外潜在的sql攻击媒介."
+    # description = "Use of extra potential SQL attack vector."
     if context.call_function_name == "extra":
         kwargs = keywords2dict(context.node.keywords)
         args = context.node.args
@@ -126,7 +127,8 @@ def django_rawsql_used(context):
         CWE information added
 
     """  # noqa: E501
-    description = "Use of RawSQL potential SQL attack vector."
+    description = "使用了RawSQL的潜在sql攻击媒介."
+    # description = "Use of RawSQL potential SQL attack vector."
     if context.is_module_imported_like("django.db.models"):
         if context.call_function_name == "RawSQL":
             sql = context.node.args[0]

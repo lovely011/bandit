@@ -62,7 +62,8 @@ def request_without_timeout(context):
                 severity=bandit.MEDIUM,
                 confidence=bandit.LOW,
                 cwe=issue.Cwe.UNCONTROLLED_RESOURCE_CONSUMPTION,
-                text="Requests call without timeout",
+                text="请求调用超时",
+                # text="Requests call without timeout",
             )
         # check for timeout=None
         if context.check_call_arg_value("timeout", "None"):
@@ -70,5 +71,6 @@ def request_without_timeout(context):
                 severity=bandit.MEDIUM,
                 confidence=bandit.LOW,
                 cwe=issue.Cwe.UNCONTROLLED_RESOURCE_CONSUMPTION,
-                text="Requests call with timeout set to None",
+                text="请求调用超时设置为None",
+                # text="Requests call with timeout set to None",
             )

@@ -82,7 +82,8 @@ def _classify_key_size(config, key_type, key_size):
                 severity=level,
                 confidence=bandit.HIGH,
                 cwe=issue.Cwe.INADEQUATE_ENCRYPTION_STRENGTH,
-                text="%s key sizes below %d bits are considered breakable. "
+                text="%s 键的大小下于 %d bits 被认为可被破坏. "
+                # text = "%s key sizes below %d bits are considered breakable. "
                 % (key_type, size),
             )
 

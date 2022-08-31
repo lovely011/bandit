@@ -65,8 +65,10 @@ def _hashlib_func(context):
                         severity=bandit.HIGH,
                         confidence=bandit.HIGH,
                         cwe=issue.Cwe.BROKEN_CRYPTO,
-                        text=f"Use of weak {func.upper()} hash for security. "
-                        "Consider usedforsecurity=False",
+                        text=f"使用不牢固的 {func.upper()} 安全哈希. "
+                             "考虑 usedforsecurity=False",
+                        # text=f"Use of weak {func.upper()} hash for security. "
+                             # "Consider usedforsecurity=False",
                         lineno=context.node.lineno,
                     )
             elif func == "new":

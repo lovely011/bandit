@@ -52,8 +52,10 @@ def snmp_insecure_version_check(context):
                 severity=bandit.MEDIUM,
                 confidence=bandit.HIGH,
                 cwe=issue.Cwe.CLEARTEXT_TRANSMISSION,
-                text="The use of SNMPv1 and SNMPv2 is insecure. "
-                "You should use SNMPv3 if able.",
+                text="使用SNMPv1和SNMPv2是不安全的. "
+                "如果可以的话，使用SNMPv3.",
+                # text="The use of SNMPv1 and SNMPv2 is insecure. "
+                #      "You should use SNMPv3 if able.",
                 lineno=context.get_lineno_for_call_arg("CommunityData"),
             )
 
@@ -104,7 +106,9 @@ def snmp_crypto_check(context):
                 severity=bandit.MEDIUM,
                 confidence=bandit.HIGH,
                 cwe=issue.Cwe.CLEARTEXT_TRANSMISSION,
-                text="You should not use SNMPv3 without encryption. "
-                "noAuthNoPriv & authNoPriv is insecure",
+                text="你不该在没有encryption的情况下使用SNMPv3. "
+                "noAuthNoPriv 和 authNoPriv 是不安全的",
+                # text="You should not use SNMPv3 without encryption. "
+                #      "noAuthNoPriv & authNoPriv is insecure",
                 lineno=context.get_lineno_for_call_arg("UsmUserData"),
             )

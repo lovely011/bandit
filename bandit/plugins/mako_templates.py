@@ -61,9 +61,14 @@ def use_of_mako_templates(context):
                 severity=bandit.MEDIUM,
                 confidence=bandit.HIGH,
                 cwe=issue.Cwe.BASIC_XSS,
-                text="Mako templates allow HTML/JS rendering by default and "
-                "are inherently open to XSS attacks. Ensure variables "
-                "in all templates are properly sanitized via the 'n', "
-                "'h' or 'x' flags (depending on context). For example, "
+                text="Mako 模板允许 HTML/JS 默认渲染，并且 "
+                "天生会容易受到XSS攻击. 确保变量 "
+                "在所有的模板里适当的通过 'n', "
+                "'h' or 'x' 参数 (取决于上下文). 例如, "
                 "to HTML escape the variable 'data' do ${ data |h }.",
+                # text="Mako templates allow HTML/JS rendering by default and "
+                #      "are inherently open to XSS attacks. Ensure variables "
+                #      "in all templates are properly sanitized via the 'n', "
+                #      "'h' or 'x' flags (depending on context). For example, "
+                #      "to HTML escape the variable 'data' do ${ data |h }.",
             )

@@ -56,27 +56,33 @@ def exec_issue(level, members=""):
             severity=bandit.LOW,
             confidence=bandit.LOW,
             cwe=issue.Cwe.PATH_TRAVERSAL,
-            text="Usage of tarfile.extractall(members=function(tarfile)). "
-            "Make sure your function properly discards dangerous members "
+            text="发现tarfile.extractall. "
+            "确认你的功能可以丢弃危险成员"
             "{members}).".format(members=members),
+            # text="Usage of tarfile.extractall(members=function(tarfile)). "
+            #      "Make sure your function properly discards dangerous members "
+            #      "{members}).".format(members=members),
         )
     elif level == bandit.MEDIUM:
         return bandit.Issue(
             severity=bandit.MEDIUM,
             confidence=bandit.MEDIUM,
             cwe=issue.Cwe.PATH_TRAVERSAL,
-            text="Found tarfile.extractall(members=?) but couldn't "
-            "identify the type of members. "
-            "Check if the members were properly validated "
+            text="发现tarfile.extractall，但无法验证里面的成员的类型 "
+            "需要进行检查，如果成员可能有效"
             "{members}).".format(members=members),
+            # text="Found tarfile.extractall(members=?) but couldn't "
+            #      "identify the type of members. "
+            #      "Check if the members were properly validated "
+            #      "{members}).".format(members=members),
         )
     else:
         return bandit.Issue(
             severity=bandit.HIGH,
             confidence=bandit.HIGH,
             cwe=issue.Cwe.PATH_TRAVERSAL,
-            text="tarfile.extractall used without any validation. "
-            "Please check and discard dangerous members.",
+            text="使用tarfile.extractall时没有经过任何验证 "
+            "请检查并丢弃危险成员",
         )
 
 

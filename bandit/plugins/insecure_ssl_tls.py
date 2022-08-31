@@ -119,8 +119,9 @@ def ssl_with_bad_version(context, config):
                 severity=bandit.HIGH,
                 confidence=bandit.HIGH,
                 cwe=issue.Cwe.BROKEN_CRYPTO,
-                text="ssl.wrap_socket call with insecure SSL/TLS protocol "
-                "version identified, security issue.",
+                text="在 ssl.wrap_socket 的调用中使用了不安全的SSL/TLS的协议版本，安全问题 ",
+                # text="ssl.wrap_socket call with insecure SSL/TLS protocol "
+                #      "version identified, security issue.",
                 lineno=context.get_lineno_for_call_arg("ssl_version"),
             )
     elif context.call_function_name_qual == "pyOpenSSL.SSL.Context":
@@ -129,8 +130,9 @@ def ssl_with_bad_version(context, config):
                 severity=bandit.HIGH,
                 confidence=bandit.HIGH,
                 cwe=issue.Cwe.BROKEN_CRYPTO,
-                text="SSL.Context call with insecure SSL/TLS protocol "
-                "version identified, security issue.",
+                text="在 SSL.Context 的调用中使用了不安全的SSL/TLS的协议版本，安全问题 ",
+                # text="SSL.Context call with insecure SSL/TLS protocol "
+                #      "version identified, security issue.",
                 lineno=context.get_lineno_for_call_arg("method"),
             )
 
@@ -148,8 +150,11 @@ def ssl_with_bad_version(context, config):
                 severity=bandit.MEDIUM,
                 confidence=bandit.MEDIUM,
                 cwe=issue.Cwe.BROKEN_CRYPTO,
-                text="Function call with insecure SSL/TLS protocol "
-                "identified, possible security issue.",
+                text="在函数的调用中使用了不安全的SSL/TLS的协议版本，安全问题 ",
+                # text="Function call with insecure SSL/TLS protocol "
+                #      "identified, possible security issue.",
+                # text="Function call with insecure SSL/TLS protocol "
+                #      "identified, possible security issue.",
                 lineno=lineno,
             )
 
@@ -214,9 +219,11 @@ def ssl_with_bad_defaults(context, config):
                 severity=bandit.MEDIUM,
                 confidence=bandit.MEDIUM,
                 cwe=issue.Cwe.BROKEN_CRYPTO,
-                text="Function definition identified with insecure SSL/TLS "
-                "protocol version by default, possible security "
-                "issue.",
+                text="函数定义确认使用了不安全的SSL/TLS "
+                "协议版本是默认的，可能会有安全问题 ",
+                # text="Function definition identified with insecure SSL/TLS "
+                #      "protocol version by default, possible security "
+                #      "issue.",
             )
 
 
@@ -278,8 +285,11 @@ def ssl_with_no_version(context):
                 severity=bandit.LOW,
                 confidence=bandit.MEDIUM,
                 cwe=issue.Cwe.BROKEN_CRYPTO,
-                text="ssl.wrap_socket call with no SSL/TLS protocol version "
-                "specified, the default SSLv23 could be insecure, "
-                "possible security issue.",
+                text="在 ssl.wrap_socket 调用中没有具体说明SSL/TLS协议版本 "
+                "默认的版本 SSLv23 可能是不安全的, "
+                "可能会有安全问题",
+                # text="ssl.wrap_socket call with no SSL/TLS protocol version "
+                #      "specified, the default SSLv23 could be insecure, "
+                #      "possible security issue.",
                 lineno=context.get_lineno_for_call_arg("ssl_version"),
             )

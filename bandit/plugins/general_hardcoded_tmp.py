@@ -76,5 +76,6 @@ def hardcoded_tmp_directory(context, config):
             severity=bandit.MEDIUM,
             confidence=bandit.MEDIUM,
             cwe=issue.Cwe.INSECURE_TEMP_FILE,
-            text="Probable insecure usage of temp file/directory.",
+            text="可能使用不安全的临时文件/目录",
+            # text="Probable insecure usage of temp file/directory.",
         )

@@ -21,7 +21,8 @@ def _report(value):
         severity=bandit.LOW,
         confidence=bandit.MEDIUM,
         cwe=issue.Cwe.HARD_CODED_PASSWORD,
-        text=("Possible hardcoded password: '%s'" % value),
+        # text=("Possible hardcoded password: '%s'" % value),
+        text=("可能的硬编码密码: '%s'" % value),
     )
 
 

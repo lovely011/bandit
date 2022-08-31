@@ -48,5 +48,6 @@ def hardcoded_bind_all_interfaces(context):
             severity=bandit.MEDIUM,
             confidence=bandit.MEDIUM,
             cwe=issue.Cwe.MULTIPLE_BINDS,
-            text="Possible binding to all interfaces.",
+            # text="Possible binding to all interfaces.",
+            text="可能绑定到所有接口.",
         )

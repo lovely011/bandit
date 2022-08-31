@@ -76,8 +76,11 @@ def assert_used(context, config):
         severity=bandit.LOW,
         confidence=bandit.HIGH,
         cwe=issue.Cwe.IMPROPER_CHECK_OF_EXCEPT_COND,
+        # text=(
+        #     "Use of assert detected. The enclosed code "
+        #     "will be removed when compiling to optimised byte code."
+        # ),
         text=(
-            "Use of assert detected. The enclosed code "
-            "will be removed when compiling to optimised byte code."
+            "使用了assert检测. 封装好的代码将会被移动在编译字节码的时候 "
         ),
     )

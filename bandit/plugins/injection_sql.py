@@ -112,6 +112,7 @@ def hardcoded_sql_expressions(context):
             severity=bandit.MEDIUM,
             confidence=bandit.MEDIUM if val[0] else bandit.LOW,
             cwe=issue.Cwe.SQL_INJECTION,
-            text="Possible SQL injection vector through string-based "
-            "query construction.",
+            text="通过基于字符串构造的查询可能会注入sql向量 ",
+            # text="Possible SQL injection vector through string-based "
+                 # "query construction.",
         )

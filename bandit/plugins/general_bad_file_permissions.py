@@ -94,6 +94,7 @@ def set_bad_file_permissions(context):
                     severity=sev_level,
                     confidence=bandit.HIGH,
                     cwe=issue.Cwe.INCORRECT_PERMISSION_ASSIGNMENT,
-                    text="Chmod setting a permissive mask %s on file (%s)."
+                    text="Chmod设置许可掩码 %s 在文件 (%s)."
+                    # text = "Chmod setting a permissive mask %s on file (%s)."
                     % (oct(mode), filename),
                 )

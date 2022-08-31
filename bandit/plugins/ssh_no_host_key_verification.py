@@ -55,8 +55,9 @@ def ssh_no_host_key_verification(context):
                 severity=bandit.HIGH,
                 confidence=bandit.MEDIUM,
                 cwe=issue.Cwe.IMPROPER_CERT_VALIDATION,
-                text="Paramiko call with policy set to automatically trust "
-                "the unknown host key.",
+                text="策略设置为自动信任未知主键的Paramiko调用 ",
+                # text="Paramiko call with policy set to automatically trust "
+                #      "the unknown host key.",
                 lineno=context.get_lineno_for_call_arg(
                     "set_missing_host_key_policy"
                 ),

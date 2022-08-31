@@ -208,9 +208,11 @@ def subprocess_popen_with_shell_equals_true(context, config):
                         severity=bandit.LOW,
                         confidence=bandit.HIGH,
                         cwe=issue.Cwe.OS_COMMAND_INJECTION,
-                        text="subprocess call with shell=True seems safe, but "
-                        "may be changed in the future, consider "
-                        "rewriting without shell",
+                        text="在 shell=True 的情况下使用subprocess调用看起来安全, "
+                        "但未来可能会有所改变，考虑不用shell重新写入",
+                        # text="subprocess call with shell=True seems safe, but "
+                        #      "may be changed in the future, consider "
+                        #      "rewriting without shell",
                         lineno=context.get_lineno_for_call_arg("shell"),
                     )
                 else:
@@ -218,8 +220,9 @@ def subprocess_popen_with_shell_equals_true(context, config):
                         severity=bandit.HIGH,
                         confidence=bandit.HIGH,
                         cwe=issue.Cwe.OS_COMMAND_INJECTION,
-                        text="subprocess call with shell=True identified, "
-                        "security issue.",
+                        text="在 shell=True 的情况下使用subprocess 确认有安全问题 ",
+                        # text="subprocess call with shell=True identified, "
+                        #      "security issue.",
                         lineno=context.get_lineno_for_call_arg("shell"),
                     )
 
@@ -304,8 +307,9 @@ def subprocess_without_shell_equals_true(context, config):
                 severity=bandit.LOW,
                 confidence=bandit.HIGH,
                 cwe=issue.Cwe.OS_COMMAND_INJECTION,
-                text="subprocess call - check for execution of untrusted "
-                "input.",
+                text="subprocess 调用 - 检查不可信的输入的执行情况",
+                # text="subprocess call - check for execution of untrusted "
+                     # "input.",
                 lineno=context.get_lineno_for_call_arg("shell"),
             )
 
@@ -389,8 +393,9 @@ def any_other_function_with_shell_equals_true(context, config):
                 severity=bandit.MEDIUM,
                 confidence=bandit.LOW,
                 cwe=issue.Cwe.OS_COMMAND_INJECTION,
-                text="Function call with shell=True parameter identified, "
-                "possible security issue.",
+                text="在使用shell=True参数的情况下调用功能可能会存在安全问题",
+                # text="Function call with shell=True parameter identified, "
+                #      "possible security issue.",
                 lineno=context.get_lineno_for_call_arg("shell"),
             )
 
@@ -482,18 +487,25 @@ def start_process_with_a_shell(context, config):
                     severity=bandit.LOW,
                     confidence=bandit.HIGH,
                     cwe=issue.Cwe.OS_COMMAND_INJECTION,
-                    text="Starting a process with a shell: "
-                    "Seems safe, but may be changed in the future, "
-                    "consider rewriting without shell",
+                    text="使用shell的方式开始程序: "
+                    "看起来安全，但是未来可能会有所改变 "
+                    "考虑不使用shell重新开始程序",
                 )
+                #     text = "Starting a process with a shell: "
+                #     "Seems safe, but may be changed in the future, "
+                #     "consider rewriting without shell",
+                # )
             else:
                 return bandit.Issue(
                     severity=bandit.HIGH,
                     confidence=bandit.HIGH,
                     cwe=issue.Cwe.OS_COMMAND_INJECTION,
-                    text="Starting a process with a shell, possible injection"
-                    " detected, security issue.",
+                    text="使用 shell 启动进程，检测到可能的注入"
+                    "安全问题.",
                 )
+                #     text = "Starting a process with a shell, possible injection"
+                #     " detected, security issue.",
+                # )
 
 
 @test.takes_config("shell_injection")
@@ -690,5 +702,6 @@ def start_process_with_partial_path(context, config):
                     severity=bandit.LOW,
                     confidence=bandit.HIGH,
                     cwe=issue.Cwe.OS_COMMAND_INJECTION,
-                    text="Starting a process with a partial executable path",
+                    text="使用部分可执行路径启动进程",
+                    # text="Starting a process with a partial executable path",
                 )

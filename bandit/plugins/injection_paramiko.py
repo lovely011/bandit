@@ -48,9 +48,12 @@ from bandit.core import test_properties as test
 @test.checks("Call")
 @test.test_id("B601")
 def paramiko_calls(context):
+    # issue_text = (
+    #     "Possible shell injection via Paramiko call, check inputs "
+    #     "are properly sanitized."
+    # )
     issue_text = (
-        "Possible shell injection via Paramiko call, check inputs "
-        "are properly sanitized."
+        "可能通过Paramiko调用进行shell注入, 检查输入可能是解法"
     )
     for module in ["paramiko"]:
         if context.is_module_imported_like(module):

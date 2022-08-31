@@ -102,5 +102,6 @@ def try_except_pass(context, config):
                 severity=bandit.LOW,
                 confidence=bandit.HIGH,
                 cwe=issue.Cwe.IMPROPER_CHECK_OF_EXCEPT_COND,
-                text=("Try, Except, Pass detected."),
+                text=("检测到try，except，pass."),
+                # text=("Try, Except, Pass detected."),
             )

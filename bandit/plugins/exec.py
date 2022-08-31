@@ -44,7 +44,8 @@ def exec_issue():
         severity=bandit.MEDIUM,
         confidence=bandit.HIGH,
         cwe=issue.Cwe.OS_COMMAND_INJECTION,
-        text="Use of exec detected.",
+        text="使用 exec 检测.",
+        # text="Use of exec detected.",
     )
 
 
