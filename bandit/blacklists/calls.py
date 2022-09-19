@@ -355,8 +355,10 @@ def gen_blacklist():
                 "jsonpickle.unpickler.Unpickler",
                 "pandas.read_pickle",
             ],
-            "Pickle and modules that wrap it can be unsafe when used to "
-            "deserialize untrusted data, possible security issue.",
+            # "Pickle and modules that wrap it can be unsafe when used to "
+            # "deserialize untrusted data, possible security issue.",
+            "在使用反序列化，不可信的数据时，Pickle和包装他的模块可能会不安全"
+            "可能会有安全问题"
         )
     )
 
@@ -366,7 +368,8 @@ def gen_blacklist():
             "B302",
             issue.Cwe.DESERIALIZATION_OF_UNTRUSTED_DATA,
             ["marshal.load", "marshal.loads"],
-            "Deserialization with the marshal module is possibly dangerous.",
+            # "Deserialization with the marshal module is possibly dangerous.",
+            "控制模块进行反序列化可能会很危险"
         )
     )
 
@@ -388,7 +391,8 @@ def gen_blacklist():
                     "cryptography.hazmat.primitives.hashes.MD5",
                     "cryptography.hazmat.primitives.hashes.SHA1",
                 ],
-                "Use of insecure MD2, MD4, MD5, or SHA1 hash function.",
+                # "Use of insecure MD2, MD4, MD5, or SHA1 hash function.",
+                "使用了不安全的 MD2, MD4, MD5, or SHA1 哈希功能",
             )
         )
     else:
@@ -413,7 +417,8 @@ def gen_blacklist():
                     "cryptography.hazmat.primitives.hashes.MD5",
                     "cryptography.hazmat.primitives.hashes.SHA1",
                 ],
-                "Use of insecure MD2, MD4, MD5, or SHA1 hash function.",
+                # "Use of insecure MD2, MD4, MD5, or SHA1 hash function.",
+                "使用了不安全的 MD2, MD4, MD5, or SHA1 哈希功能",
             )
         )
 
@@ -437,8 +442,9 @@ def gen_blacklist():
                 "cryptography.hazmat.primitives.ciphers.algorithms.Blowfish",
                 "cryptography.hazmat.primitives.ciphers.algorithms.IDEA",
             ],
-            "Use of insecure cipher {name}. Replace with a known secure"
-            " cipher such as AES.",
+            # "Use of insecure cipher {name}. Replace with a known secure"
+            # " cipher such as AES.",
+            "使用了不安全的密码 {name}. 替换为已知的安全密码，比如：AES",
             "HIGH",
         )
     )
@@ -449,7 +455,8 @@ def gen_blacklist():
             "B305",
             issue.Cwe.BROKEN_CRYPTO,
             ["cryptography.hazmat.primitives.ciphers.modes.ECB"],
-            "Use of insecure cipher mode {name}.",
+            "使用了不安全的密码模式 {name}.",
+            # "Use of insecure cipher mode {name}.",
         )
     )
 
@@ -460,6 +467,7 @@ def gen_blacklist():
             issue.Cwe.INSECURE_TEMP_FILE,
             ["tempfile.mktemp"],
             "Use of insecure and deprecated function (mktemp).",
+            "使用了不安全并且强烈拒绝的功能 (mktemp) ",
         )
     )
 
@@ -469,8 +477,9 @@ def gen_blacklist():
             "B307",
             issue.Cwe.OS_COMMAND_INJECTION,
             ["eval"],
-            "Use of possibly insecure function - consider using safer "
-            "ast.literal_eval.",
+            "使用了可能不安全的功能，考虑使用更安全的 ast.literal_eval.",
+            # "Use of possibly insecure function - consider using safer "
+            # "ast.literal_eval.",
         )
     )
 
@@ -480,8 +489,10 @@ def gen_blacklist():
             "B308",
             issue.Cwe.XSS,
             ["django.utils.safestring.mark_safe"],
-            "Use of mark_safe() may expose cross-site scripting "
-            "vulnerabilities and should be reviewed.",
+            "使用mark_safe（）可能会暴露跨站点脚本"
+            "需要重新审视弱点.",
+            # "Use of mark_safe() may expose cross-site scripting "
+            # "vulnerabilities and should be reviewed.",
         )
     )
 
@@ -510,6 +521,8 @@ def gen_blacklist():
             ],
             "Audit url open for permitted schemes. Allowing use of file:/ or "
             "custom schemes is often unexpected.",
+            "对允许的方案进行url审查. 不希望使用file:/ 或者 "
+            "自定义的方案.",
         )
     )
 
@@ -527,8 +540,9 @@ def gen_blacklist():
                 "random.uniform",
                 "random.triangular",
             ],
-            "Standard pseudo-random generators are not suitable for "
-            "security/cryptographic purposes.",
+            # "Standard pseudo-random generators are not suitable for "
+            # "security/cryptographic purposes.",
+            "标准伪随机生成器不适用于安全 / 加密目的",
             "LOW",
         )
     )
@@ -541,6 +555,8 @@ def gen_blacklist():
             ["telnetlib.*"],
             "Telnet-related functions are being called. Telnet is considered "
             "insecure. Use SSH or some other encrypted protocol.",
+            "Telnet-related功能已经被调用，Telnet被认为是不安全的"
+            " 使用SSH或其他加密协议",
             "HIGH",
         )
     )
@@ -549,10 +565,13 @@ def gen_blacklist():
     #   https://pypi.org/project/defusedxml/#defusedxml-sax
 
     xml_msg = (
-        "Using {name} to parse untrusted XML data is known to be "
-        "vulnerable to XML attacks. Replace {name} with its "
-        "defusedxml equivalent function or make sure "
-        "defusedxml.defuse_stdlib() is called"
+        # "Using {name} to parse untrusted XML data is known to be "
+        # "vulnerable to XML attacks. Replace {name} with its "
+        # "defusedxml equivalent function or make sure "
+        # "defusedxml.defuse_stdlib() is called"
+        "已知使用 {name} 去解析不可信的XML数据容易受到XML攻击 "
+        "将 {name} 替换成它defusedxml等效函数"
+        "或者确定调用了 defusedxml.defuse_stdlib()函数"
     )
 
     sets.append(
@@ -649,9 +668,11 @@ def gen_blacklist():
                 "lxml.etree.check_docinfo",
             ],
             (
-                "Using {name} to parse untrusted XML data is known to be "
-                "vulnerable to XML attacks. Replace {name} with its "
-                "defusedxml equivalent function."
+                # "Using {name} to parse untrusted XML data is known to be "
+                # "vulnerable to XML attacks. Replace {name} with its "
+                # "defusedxml equivalent function."
+                "已知使用 {name} 去解析不可信的XML数据容易受到XML攻击 "
+                "将 {name} 替换成它defusedxml等效函数"
             ),
         )
     )
@@ -666,6 +687,8 @@ def gen_blacklist():
             ["ftplib.*"],
             "FTP-related functions are being called. FTP is considered "
             "insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+            "FTP-related功能已经被调用，FTP被认为是不安全的"
+            " 使用SSH或其他加密协议",
             "HIGH",
         )
     )
@@ -678,11 +701,14 @@ def gen_blacklist():
             "B323",
             issue.Cwe.IMPROPER_CERT_VALIDATION,
             ["ssl._create_unverified_context"],
-            "By default, Python will create a secure, verified ssl context for"
-            " use in such classes as HTTPSConnection. However, it still allows"
-            " using an insecure context via the _create_unverified_context "
-            "that  reverts to the previous behavior that does not validate "
-            "certificates or perform hostname checks.",
+            # "By default, Python will create a secure, verified ssl context for"
+            # " use in such classes as HTTPSConnection. However, it still allows"
+            # " using an insecure context via the _create_unverified_context "
+            # "that  reverts to the previous behavior that does not validate "
+            # "certificates or perform hostname checks.",
+            "默认情况下，python为了HTTPSConnection等累会创建一个安全的，已被验证的ssl"
+            "然而，它仍然会允许使用不安全的渠道the _create_unverified_context"
+            " 会恢复以前的行为，但不会去验证证书，也不会检查执行的主机 ",
         )
     )
 

@@ -248,6 +248,7 @@ def gen_blacklist():
             ["telnetlib"],
             "A telnet-related module is being imported.  Telnet is "
             "considered insecure. Use SSH or some other encrypted protocol.",
+            "telnet-related 模块被调用. telnet被认为是不安全的，应使用SSH或其它加密协议 ",
             "HIGH",
         )
     )
@@ -258,8 +259,11 @@ def gen_blacklist():
             "B402",
             issue.Cwe.CLEARTEXT_TRANSMISSION,
             ["ftplib"],
-            "A FTP-related module is being imported.  FTP is considered "
-            "insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+            # "A FTP-related module is being imported.  FTP is considered "
+            # "insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+            # "A FTP-related module is being imported.  FTP is considered "
+            # "insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+            "FTP-related 模块被调用. SSH/SFTP/SCP被认为是不安全的，应使用SSH或其它加密协议 ",
             "HIGH",
         )
     )
@@ -270,8 +274,10 @@ def gen_blacklist():
             "B403",
             issue.Cwe.DESERIALIZATION_OF_UNTRUSTED_DATA,
             ["pickle", "cPickle", "dill", "shelve"],
-            "Consider possible security implications associated with "
+            "认为可能有有关 {name} 模块的安全隐患 "
             "{name} module.",
+            # "Consider possible security implications associated with "
+            # "{name} module.",
             "LOW",
         )
     )
@@ -282,8 +288,9 @@ def gen_blacklist():
             "B404",
             issue.Cwe.OS_COMMAND_INJECTION,
             ["subprocess"],
-            "Consider possible security implications associated with the "
-            "subprocess module.",
+            # "Consider possible security implications associated with the "
+            # "subprocess module.",
+            "认为可能有有关 subprocess 模块的安全隐患 "
             "LOW",
         )
     )
@@ -292,15 +299,20 @@ def gen_blacklist():
     #   https://pypi.org/project/defusedxml/#defusedxml-sax
 
     xml_msg = (
-        "Using {name} to parse untrusted XML data is known to be "
-        "vulnerable to XML attacks. Replace {name} with the equivalent "
-        "defusedxml package, or make sure defusedxml.defuse_stdlib() "
-        "is called."
+        # "Using {name} to parse untrusted XML data is known to be "
+        # "vulnerable to XML attacks. Replace {name} with the equivalent "
+        # "defusedxml package, or make sure defusedxml.defuse_stdlib() "
+        # "is called."
+        "已知使用 {name} 去解析不可信的XML数据容易受到XML攻击 "
+        "将 {name} 替换成它defusedxml等效的包"
+        "或者确定调用了 defusedxml.defuse_stdlib()函数"
     )
     lxml_msg = (
-        "Using {name} to parse untrusted XML data is known to be "
-        "vulnerable to XML attacks. Replace {name} with the "
-        "equivalent defusedxml package."
+        # "Using {name} to parse untrusted XML data is known to be "
+        # "vulnerable to XML attacks. Replace {name} with the "
+        # "equivalent defusedxml package."
+        "已知使用 {name} 去解析不可信的XML数据容易受到XML攻击 "
+        "将 {name} 替换成它defusedxml等效的包"
     )
 
     sets.append(
@@ -375,10 +387,13 @@ def gen_blacklist():
             "B411",
             issue.Cwe.IMPROPER_INPUT_VALIDATION,
             ["xmlrpclib"],
-            "Using {name} to parse untrusted XML data is known to be "
-            "vulnerable to XML attacks. Use defused.xmlrpc.monkey_patch() "
-            "function to monkey-patch xmlrpclib and mitigate XML "
-            "vulnerabilities.",
+            # "Using {name} to parse untrusted XML data is known to be "
+            # "vulnerable to XML attacks. Use defused.xmlrpc.monkey_patch() "
+            # "function to monkey-patch xmlrpclib and mitigate XML "
+            # "vulnerabilities.",
+            "已知使用 {name} 去解析不可信的XML数据容易受到XML攻击 "
+            "使用defused.xmlrpc.monkey_patch()函数 "
+            "去monkey补丁xmlrpclib和缓解XML弱点"
             "HIGH",
         )
     )
@@ -393,7 +408,9 @@ def gen_blacklist():
                 "twisted.web.twcgi.CGIScript",
                 "twisted.web.twcgi.CGIDirectory",
             ],
-            "Consider possible security implications associated with "
+            # "Consider possible security implications associated with "
+            # "{name} module.",
+            "认为可能有有关 {name} 模块的安全隐患 "
             "{name} module.",
             "HIGH",
         )
@@ -414,9 +431,11 @@ def gen_blacklist():
                 "Crypto.Signature",
                 "Crypto.Util",
             ],
-            "The pyCrypto library and its module {name} are no longer actively"
-            " maintained and have been deprecated. "
-            "Consider using pyca/cryptography library.",
+            # "The pyCrypto library and its module {name} are no longer actively"
+            # " maintained and have been deprecated. "
+            # "Consider using pyca/cryptography library.",
+            "pyCrypto库和它的模块 {name} 已经不再活跃，维护，并且已经被弃用"
+            "考虑使用 pyca/cryptography 库.",
             "HIGH",
         )
     )
@@ -427,8 +446,11 @@ def gen_blacklist():
             "B415",
             issue.Cwe.CLEARTEXT_TRANSMISSION,
             ["pyghmi"],
+            # "An IPMI-related module is being imported. IPMI is considered "
+            # "insecure. Use an encrypted protocol.",
             "An IPMI-related module is being imported. IPMI is considered "
             "insecure. Use an encrypted protocol.",
+            "IPMI-related 模块被调用. IPMI被认为是不安全的，应使用SSH或其它加密协议 ",
             "HIGH",
         )
     )
